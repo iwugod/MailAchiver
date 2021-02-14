@@ -1,0 +1,155 @@
+<div class="bg-white min-h-screen text-gray-700" *ngIf="hideTable">
+
+    <div class="grid grid-cols-12 grid-rows-1 bg-gray-50 border-b-2 lg:grid-cols-10 grid-rows-1 gap-4 p-3 bg-gray-50">
+
+        <div class="lg:col-span-2 col-span-3  pr-2 border-r-2 border-gray-400 md:border-r-0">
+            <div class="flex items-center">
+                <div class="pr-2 font-bold lg:font-normal">
+                    From
+                </div>
+                <div class="lg:invisible visible md:pr-1 md:pl-1">
+                    <svg class="h-3 w-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 5">
+                        <defs>
+                            <style>
+                                .a {
+                                    fill: #333;
+                                }
+                            </style>
+                        </defs>
+                        <title>icon_arrow01</title>
+                        <polygon class="a" points="8 5 3.993 0 0 5 8 5" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="lg:col-span-3 col-span-2 pr-2 text-center lg:text-left border-r-2 border-gray-400 md:border-r-0">To
+        </div>
+
+        <div class="lg:col-span-4 col-span-3 pr-2 border-r-2 border-gray-400 md:border-r-0">Subject</div>
+
+        <div class="lg:col-span-1 col-span-4 pr-2">
+            <div class="flex items-center">
+                <div class="block lg:pl-5 md:font-bold pl-0">
+                    Date
+                </div>
+                <div class="block pl-2 invisible md:visible">
+                    <svg class="h-2 w-2 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 5">
+                        <defs>
+                            <style>
+                                .a {
+                                    fill: #333;
+                                }
+                            </style>
+                        </defs>
+                        <title>icon_arrow01</title>
+                        <polygon class="a" points="8 5 3.993 0 0 5 8 5" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngFor="let data of filterDataSource; let index = index;">
+        <div class="grid grid-cols-12 grid-rows-1 gap-4 p-3 grid md:grid-cols-10 hover:bg-gray-100 hover:text-blue-500 focus:outline-none focus:text-blue-500 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 border-b-2 border-gray-100"
+            (click)="toggleArchiveBody(data)"
+            >
+            <div class="lg:col-span-2  truncate  col-span-12">
+                <div class="flex items-center">
+
+                    <!-- Mobile -->
+                    <div class="pr-2 lg:hidden">
+                        <svg class="h-10 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11.35144 26.35693">
+                            <defs>
+                                <style>
+                                    .a {
+                                        fill: #666;
+                                    }
+                                </style>
+                            </defs>
+                            <title>icon_mail_sp</title>
+                            <path class="a"
+                                d="M0,0V7.20007H11.35144V0ZM9.90466.80005,5.67542,4.34863,1.44617.80005ZM.80005,6.4V1.30225L5.41858,5.17773a.39868.39868,0,0,0,.51367,0l4.61914-3.876V6.4Z" />
+                            <path class="a"
+                                d="M3.54952,13.76637a.36946.36946,0,0,0,0,.52093l2.13177,2.14285L7.82044,14.291a.36945.36945,0,0,0-.52093-.52093L6.05075,15.01513v-2.7963a.36946.36946,0,0,0-.73892,0v2.80738L4.06307,13.77745A.36946.36946,0,0,0,3.54952,13.76637Z" />
+                            <path class="a"
+                                d="M5.67566,22.35693a1.5,1.5,0,1,1-1.5,1.5,1.50164,1.50164,0,0,1,1.5-1.5m0-1a2.5,2.5,0,1,0,2.5,2.5,2.5,2.5,0,0,0-2.5-2.5Z" />
+                        </svg>
+                    </div>
+
+                    <div class="flex flex-wrap">
+                        <div class="flex pb-1">
+
+                            <div class="w-56 font-bold lg:font-normal">
+                                {{data.from}}
+                            </div>
+                            <!-- Mobile -->
+                            <div class="flex items-center lg:hidden">
+                                <div>{{data.date}}</div>
+                                <div class="pr-1 pl-1">
+                                    <svg class="h-2 w-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2.9882 6">
+                                        <defs>
+                                            <style>
+                                                .a {
+                                                    fill: #666;
+                                                }
+                                            </style>
+                                        </defs>
+                                        <title>icon_arrow02</title>
+                                        <path class="a"
+                                            d="M2.9882,3.00782a.29009.29009,0,0,1-.07319.19286L.51262,5.90234a.29054.29054,0,0,1-.43456-.38577l2.23114-2.509L.07806.48856A.29045.29045,0,0,1,.50284.09233l.00978.011L2.91512,2.8152A.28942.28942,0,0,1,2.9882,3.00782Z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mobile -->
+                        <div class="block lg:hidden">
+                            <div class="w-12/12 flex">
+                                <div class="inline-block w-72 truncate"> {{data.to}} </div>
+                                <div class="inline-block align-middle w-7 bg-gray-400 text-white text-sm pr-1 pl-1 rounded"
+                                    *ngIf="data.to.length > 1">+{{data.to.length}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Desktop -->
+            <div class="lg:col-span-3 lg:block col-span-12 hidden">
+                <div class="flex items-center">
+                    <div class="block truncate w-11/12 pr-10"> {{data.to}} </div>
+                    <div class="block bg-gray-400 text-white text-sm pr-1 pl-1 rounded" *ngIf="data.to.length > 1">
+                        +{{data.to.length}}</div>
+                </div>
+            </div>
+            <div class="lg:col-span-4 truncate col-span-10"> {{data.subject}}</div>
+            <!-- Date Desktop -->
+            <div class="lg:col-span-1 col-span-4 hidden lg:block">
+                <div class="flex items-center">
+                    <span class="block lg:pl-0 w-3">
+                        <svg *ngIf="data.hasAttachment == true" class="h-4 w-4 text-gray-400 text-right"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.93083 15">
+                            <defs>
+                                <style>
+                                    .a {
+                                        fill: #666;
+                                    }
+                                </style>
+                            </defs>
+                            <title>icon_clip</title>
+                            <path class="a"
+                                d="M6.799,3.6254A2.30522,2.30522,0,1,0,3.56718,6.85622l4.304,4.304a.5222.5222,0,0,0,.7385-.7385l-4.304-4.304c-.53586-.53586-.87743-1.33808-.23084-1.98466.64553-.64659,1.4488-.304,1.98466.23189L11.032,9.3364c1.90632,1.90841,2.38159,2.78793,1.24615,3.92441-1.149,1.148-2.367.86385-4.20121-.96935L2.367,6.57941C1.1741,5.38653.33845,3.43842,1.90633,1.87159c1.86141-1.86141,3.98708-.03134,4.59293.57555l5.11038,5.11142a.5222.5222,0,0,0,.7385-.7385L7.23776,1.70864C5.18625-.34288,2.86-.56223,1.16678,1.13308c-1.711,1.71-1.5261,4.196.4617,6.18484l5.711,5.711C7.96726,13.6567,9.31161,15,10.85756,15a3.01214,3.01214,0,0,0,2.16014-1.00173c2.07554-2.07658.15564-3.99857-1.24616-5.40141Z" />
+                        </svg>
+                    </span>
+                    <span class="block pl-2 lg:pl-5 lg:font-bold font-normal">
+                        {{data.date}}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="data.showBody" class="grid grid-cols-1 grid-rows-1 gap-4 p-3 bg-gray-200">
+            {{data.body}}
+        </div>
+    </div>
+
+</div>
+
+<div class="pt-5 pl-2 text-red-500" *ngIf="noResultFound"> No result found</div>
